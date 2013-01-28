@@ -1,7 +1,4 @@
 Template.admin.events({
-    "click .logout": function() {
-	Meteor.logout();
-    },
     "click #cc-form-submit": function() {
 	console.log("Creating competition!");
 	Competitions.insert({

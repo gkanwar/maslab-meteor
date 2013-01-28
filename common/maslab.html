@@ -4,9 +4,7 @@
 
 <body>
   {{#if loggedIn}}
-  <div class="userBox">
-    Administrator | <a href="#" target="_self" class="logout">Logout</a>
-  </div>
+    {{> userBox}}
   {{/if}}
 
   {{> main}}
@@ -21,4 +19,10 @@
   {{#if pageIs "admin"}}
     {{> admin}}
   {{/if}}
+</template>
+
+<template name="userBox">
+  <div class="userBox">
+    Administrator | <a href="#" target="_self" class="logout">Logout</a>
+  </div>
 </template>
