@@ -1,0 +1,42 @@
+<template name="admin_competition">
+  {{#if loggedIn}}
+    <div class="admin-actions">
+      <b>Create Team:</b><br/>
+      <form id="create-team-form">
+	Name: <br />
+	<input type="text" id="ct-form-name" /><br />
+	Number of members: <br/>
+	<input type="text" id="ct-form-numplayers" /> <br/>
+	<input type="button" id="ct-form-submit" value="Create Team" />
+      </form>
+
+      <b>Create Match:</b><br/>
+      <form id="create-match-form">
+	Team 1: <br />
+	<select id="cm-team0">
+	  {{#each allTeams}}
+	  <option value="{{_id}}">{{name}}</option>
+	  {{/each}}
+	</select>
+	<br />
+	Team 2: <br />
+	<select id="cm-team1">
+	  {{#each allTeams}}
+	  <option value="{{_id}}">{{name}}</option>
+	  {{/each}}
+	</select>
+	<input type="submit" id="cm-submit">Create match!</input>
+      </form>
+    </div>
+
+    {{#each allMatches}}
+    <div class="admin-match">
+      Match between ? and ?.
+    </div>
+    {{/each}}
+  {{else}}
+    <div class="loginButtons">
+      {{loginButtons}}
+    </div>
+  {{/if}}
+</template>

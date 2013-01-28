@@ -1,10 +1,16 @@
 var MaslabRouter = Backbone.Router.extend({
     routes: {
 	"": "main",
-	"admin": "admin"
+	"admin/competition/:id": "admin_competition",
+	"admin": "admin",
+	"admin/": "admin"
     },
     main: function () {
 	Session.set("currentPage", "main");
+    },
+    admin_competition: function(id) {
+	Session.set("currentPage", "admin_competition");
+	Session.set("competitionId", id);
     },
     admin: function() {
 	Session.set("currentPage", "admin");
