@@ -1,0 +1,35 @@
+<template name="admin">
+  {{#if loggedIn}}
+    <div class="admin-actions">
+      <b>Create Competition:</b><br/>
+      <form id="create-competition-form">
+	Title: <br />
+	<input type="text" id="cc-form-title" /><br/>
+	Number of teams: <br/>
+	<input type="text" id="cc-form-numteams" /><br/>
+	<input type="button" id="cc-form-submit" value="Create Competition" />
+      </form>
+      <br /><br />
+      <b>Create Team:</b><br/>
+      <form id="create-team-form">
+	Name: <br />
+	<input type="text" id="ct-form-name" /><br />
+	Number of members: <br/>
+	<input type="text" id="ct-form-numplayers" /> <br/>
+	<input type="button" id="ct-form-submit" value="Create Team" />
+      </form>
+      </div>
+    {{#each allCompetitions}}
+    <div class="admin-competition">
+      <div class="admin-competition-title">{{title}}</div>
+      <a href="/admin/competition/{{id}}">Go to competition</a><br/>
+      <b>Vitals:</b><br/>
+      Num teams: {{numteams}}
+    </div>
+    {{/each}}
+  {{else}}
+    <div class="loginButtons">
+      {{loginButtons}}
+    </div>
+  {{/if}}
+</template>

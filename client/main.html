@@ -1,0 +1,46 @@
+<template name="leaderboard">
+  <div id="outer">
+    <div id="team0" class="half">
+      {{> team_display team0}}
+    </div>
+    <div id="team1" class="half">
+      {{> team_display team1}}
+    </div>
+    <div id="footer"></div>
+  </div>
+</template>
+
+
+<template name="team_display">
+  <div class="team-name">{{name}}</div>
+  <div class="team-updates">
+    <!--
+	<ul>
+	  <li>Team 0 pressed the button!</li>
+	  <li>Team 0 collected a ball!</li>
+	  <li>Team 0 dumped 10 balls across the wall</li>
+	  <li>Team 0 scored in the tower</li>
+	</ul>
+	-->
+  </div>
+  <div class="admin-panel">
+    <table>
+      {{#each fields}}
+        {{> field}}
+      {{/each}}
+    </table>
+  </div>
+  <div class="team-score">{{score}}</div>
+</template>
+
+<template name="field">
+  <tr>
+    <td><b>{{name}}:</b> {{getScore}}</td>
+    {{#if loggedIn}}
+    <td>
+      <button class="plus">+</button>
+      <button class="minus">-</button>
+    </td>
+    {{/if}}
+  </tr>
+</template>

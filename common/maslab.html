@@ -1,0 +1,24 @@
+<head>
+  <title>MASLAB Leaderboard</title>
+</head>
+
+<body>
+  {{#if loggedIn}}
+  <div class="userBox">
+    Administrator | <a href="#" target="_self" class="logout">Logout</a>
+  </div>
+  {{/if}}
+
+  {{> main}}
+</body>
+
+
+<template name="main">
+  <!-- Helper template to route page requests -->
+  {{#if pageIs "main"}}
+    {{> leaderboard}}
+  {{/if}}
+  {{#if pageIs "admin"}}
+    {{> admin}}
+  {{/if}}
+</template>
