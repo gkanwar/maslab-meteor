@@ -1,3 +1,13 @@
+html
+{
+    height: 100%;
+    background-image: url('http://maslab.mit.edu/2013/site/img/landing.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 100%;
+    background-color: #f6f5f2;
+}
+
 body
 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -9,20 +19,20 @@ body
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    background-image: url('/images/red_balls_cropped_blurred.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 73%;
-    background-position: 0% 100%;
-    background-color: #f6f5f2;
 }
 
 .userBox
 {
     border: 1px solid black;
     position: absolute;
-    top: 10px; left: 10px;
+    top: 10px; right: 10px;
     padding: 5px;
     background-color: white;
+}
+
+.logo
+{
+    margin: 5px;
 }
 
 .outer
@@ -46,17 +56,19 @@ body
 
 .half
 {
-    width: 42.5%;
+    width: 37.5%;
     height: 100%;
-    padding: 2.5% 2.5% 2.5% 5%;
+    padding: 2.5%;
 }
 #team0
 {
     float: left;
+    margin-left: 2.5%;
 }
 #team1
 {
     float: right;
+    margin-right: 2.5%;
 }
 
 .team-name
@@ -64,7 +76,7 @@ body
     width: 96%;
     /*margin: 5% 10% 0% 10%;*/
     padding: 2%;
-    font-size: 80px;
+    font-size: 40px;
     text-align: center;
     border: 1px solid #c3c3c3;
     background-color: #F0EEE9;
@@ -110,6 +122,16 @@ body
     font-size: 200px;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
+
+.timer
+{
+    font-size: 40px;
+    font-weight: 900;
+    width: 10%;
+    float: left;
+    text-align: center;
+}
+
 #team0 .team-score
 {
     color: #ff0000;
