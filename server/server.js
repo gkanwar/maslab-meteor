@@ -13,6 +13,7 @@ Meteor.publish("fields", function() {
 
 Meteor.startup(function() {
     // Set up initial match (DEBUG)
+    /*
     if (Matches.find({current: true}).count() == 0) {
 	curMatch = {
 	    team0: {
@@ -35,6 +36,7 @@ Meteor.startup(function() {
 	};
 	Matches.insert(curMatch);
     }
+    */
 
     // Set up initial admin user, if not created yet
     if (Meteor.users.find({}).count() == 0) {

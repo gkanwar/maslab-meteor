@@ -1,5 +1,6 @@
 <template name="leaderboard">
-  <div id="outer">
+  <div class="outer">
+    {{#if currentMatch}}
     <div id="team0" class="half">
       {{> team_display team0}}
     </div>
@@ -7,6 +8,11 @@
       {{> team_display team1}}
     </div>
     <div id="footer"></div>
+    {{else}}
+    <div class="error_message">
+      There is no match currently scheduled.
+    </div>
+    {{/if}}
   </div>
 </template>
 

@@ -13,30 +13,41 @@
       <b>Create Match:</b><br/>
       <form id="create-match-form">
 	Team 1: <br />
-	<select id="cm-team0">
+	<select id="cm-form-team0">
 	  {{#each allTeams}}
 	  <option value="{{_id}}">{{name}}</option>
 	  {{/each}}
 	</select>
 	<br />
 	Team 2: <br />
-	<select id="cm-team1">
+	<select id="cm-form-team1">
 	  {{#each allTeams}}
 	  <option value="{{_id}}">{{name}}</option>
 	  {{/each}}
-	</select>
-	<input type="submit" id="cm-submit">Create match!</input>
+	</select> <br />
+	<input type="button" id="cm-form-submit" value="Create match!" />
       </form>
     </div>
 
     {{#each allMatches}}
-    <div class="admin-match">
-      Match between ? and ?.
-    </div>
+      {{> admin_match}}
     {{/each}}
+
   {{else}}
     <div class="loginButtons">
       {{loginButtons}}
     </div>
   {{/if}}
+</template>
+
+<template name="admin_match">
+  <div class="admin-item">
+    <div class="admin-item-title">{{getTeamName 0}} vs. {{getTeamName 1}}</div>
+    <b>State:</b> 
+    <select class="admin_match_state">
+      {{#each allStates}}
+      <option value="{{name}}" {{#if isCurrentState}}selected="selected"{{/if}}>{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
 </template>

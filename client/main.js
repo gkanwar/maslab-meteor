@@ -20,7 +20,10 @@ Template.leaderboard.team1 = function() {
 	}
     }
     return null;
-}
+};
+Template.leaderboard.currentMatch = function() {
+    return Session.get("cur_match");
+};
 Template.team_display.score = function() {
     var cur_match = Matches.findOne({state: "current"});
     Session.set("cur_match", cur_match);
@@ -41,13 +44,18 @@ Template.team_display.fields = function() {
 	var field = fields[index];
 	field.team_index = team_index;
     }
-    console.log(fields);
     return fields;
 };
 Template.field.getScore = function() {
     var cur_match = Session.get("cur_match");
-    console.log("Getting score: team"+this.team_index+", "+this.tag);
-    return cur_match["team" + this.team_index][this.tag];
+    var score = cur_match["team" + this.team_index][this.tag];
+    if (!score) {
+	update_obj = {};
+	update_obj["team"+this.team_index+"."+this.tag] = 0;
+	Matches.update(cur_match._id, {$set: update_obj});
+	return 0;
+    }
+    return score;
 };
 Template.field.events({
     "click .plus": function() {
