@@ -52,3 +52,6 @@ Template.admin_match.getTeamName = function(index) {
     }
     return "";
 };
+Template.admin_match.getTeamScore = function(index) {
+    return getTeamScore(this, index);
+};

@@ -49,5 +49,8 @@
       <option value="{{name}}" {{#if isCurrentState}}selected="selected"{{/if}}>{{name}}</option>
       {{/each}}
     </select>
+    <br />
+    <b>{{getTeamName 0}}:</b> {{getTeamScore 0}}<br />
+    <b>{{getTeamName 1}}:</b> {{getTeamScore 1}}
   </div>
 </template>
