@@ -7,6 +7,16 @@
     <div id="team1" class="half">
       {{> team_display team1}}
     </div>
+    <div {{#if countdown_started}}starttime="{{start}}"{{/if}} class="timer"></div>
+    {{#if loggedIn}}
+    <div class="admin-timer">
+      {{#if countdown_started}}
+      <input type="button" class="at-reset" value="Reset" />
+      {{else}}
+      <input type="button" class="at-start" value="Start" />
+      {{/if}}
+    </div>
+    {{/if}}
     <div id="footer"></div>
     {{else}}
     <div class="error_message">

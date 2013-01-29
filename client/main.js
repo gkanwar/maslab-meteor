@@ -24,6 +24,56 @@ Template.leaderboard.team1 = function() {
 Template.leaderboard.currentMatch = function() {
     return Session.get("cur_match");
 };
+
+Template.leaderboard.start = function() {
+    var cur_match = Session.get("cur_match");
+    return cur_match.start;
+};
+Template.leaderboard.countdown_started = function() {
+    var cur_match = Session.get("cur_match");
+    return (cur_match && (typeof cur_match.start == "string"));
+};
+
+var timer = setInterval(update_timer, 500);
+function update_timer() {
+    var time = $(".timer").attr("starttime");
+    // Check for null
+    if (!time) {
+	$(".timer").text("3:00");
+	return;
+    }
+    time = new Date(time);
+    countup = new Date(new Date() - time);
+    countdown = new Date(new Date(3*60*1000) - countup);
+    // Check for countdown done
+    if (countdown < new Date(0)) {
+	$(".timer").text("Done");
+	// TODO: trigger updating state
+	return;
+    }
+    mins = countdown.getMinutes();
+    secs = countdown.getSeconds();
+    if (secs < 10) { secs = "0"+secs; }
+    
+    $(".timer").text(mins+":"+secs);
+};
+
+Template.leaderboard.events({
+    "click .at-reset": function() {
+	var cur_match = Session.get("cur_match");
+	update_obj = {start: null};
+	Matches.update(cur_match._id, {$set: update_obj});
+	Session.set("cur_match", Matches.findOne({state: "current"}));
+    },
+    "click .at-start": function() {
+	var cur_match = Session.get("cur_match");
+	update_obj = {start: new Date()};
+	Matches.update(cur_match._id, {$set: update_obj});
+	Session.set("cur_match", Matches.findOne({state: "current"}));
+    },	
+});
+
+
 Template.team_display.score = function() {
     var cur_match = Matches.findOne({state: "current"});
     Session.set("cur_match", cur_match);
